@@ -1,13 +1,20 @@
+// Define the calendar name
+var calendarName = "JY Birthdays";
+
+// Define the columns to use for names and birthdays
+var nameColumn = "B";
+var birthdayColumn = "E";
+
+// Function to create birthday events
 function createBirthdayEvents() {
   // Open the active spreadsheet
   var sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
   
-  // Get the data from columns B and E (assuming the first row is the header)
-  var names = sheet.getRange("B2:B").getValues();
-  var birthdays = sheet.getRange("E2:E").getValues();
+  // Get the data from the specified columns (assuming the first row is the header)
+  var names = sheet.getRange(nameColumn + "2:" + nameColumn).getValues();
+  var birthdays = sheet.getRange(birthdayColumn + "2:" + birthdayColumn).getValues();
   
-  // Create a new calendar named "JY Birthdays"
-  var calendarName = "JY Birthdays";
+  // Get or create the calendar
   var calendars = CalendarApp.getCalendarsByName(calendarName);
   var calendar;
   
